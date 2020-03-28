@@ -1,0 +1,33 @@
+## Find own IP ## 
+ifconfig -> get ip :: 192.168.0.127
+
+
+## Find RPI device ##
+sudo nmap -sn 192.168.0.127/24
+
+-> Nmap scan report for 192.168.0.159
+
+## Connect to RPI -> ssh ##
+
+ssh pi@192.168.0.159
+
+## Copy files to RPI -> ssh ## 
+
+scp hello_rpi pi@192.168.0.159:/home/pi/TEST
+
+
+
+## RPI Turn off ##
+
+ssh pi@192.168.0.159
+sudo shutdown now
+
+#############################
+##   Apply ssh-keygen     ###
+
+1) @linux
+ssh-keygen -> enter -> enter -> enter
+2) copy to pi
+ssh-copy-id pi@IP
+3) test
+ssh pi@IP
