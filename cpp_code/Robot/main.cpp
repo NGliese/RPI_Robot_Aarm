@@ -4,26 +4,36 @@
 
 #include "utils/include/IoT_Home_Error.hpp"
 #include "Data_Package/include/Sensor_Package_PraDa.hpp"
+#include "Robot_Arm_Controller.hpp"
 
 #include <iostream>
+
+
+
+
+
+
+
+// STATEMACHINE
+
 
 
 
 int main(int argc, char ** argv)
 {
 	std::cout <<"Hello World" << std::endl;
+	/* initialize wiringPi setup */
+	// should be done only once (?)
+	wiringPiSetup();
 
-	iot_error_t err = IoT_OK;
-	Sensor_Package_PraDa spp;
-	spp.update(10,5,2,100);
-	spp.display();
+	Robot_Arm_Controller RAC;
 
-	std::cout <<"Hello World" << std::endl;
-
-	std::cout <<"Hello World" << std::endl;
-
-
-
+	for(;;)
+	{
+		std::cout << "TESTING RAC :: " << std::endl;
+		RAC.Test();
+		delay(1000);
+	}
 
 	return 0;
 	

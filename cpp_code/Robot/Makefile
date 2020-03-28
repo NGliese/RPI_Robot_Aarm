@@ -21,7 +21,10 @@ COMP_FILES= ./utils/utils.cpp           \
             ./utils/IoT_Home_Error.cpp  \
             ./Data_Package/Sensor_Package_PraDa.cpp \
             ./Data_Package/IoT_Mesh_Data_Protocol.cpp\
-            ./Costum_Error/General_Error.cpp
+            ./Costum_Error/General_Error.cpp \
+            ./MG966/MG966_API.cpp\
+            ./ACS712/ACS712_API.cpp\
+            ./Robot_Arm_Controller/Robot_Arm_Controller.cpp
 
 #SRC_FILES = application.cc displaycommand.cc filelister.cc menu.cc \
 #        menuitem.cc pixmap.cc quitcommand.cc readcommand.cc \
@@ -40,8 +43,11 @@ COMP_FILES= ./utils/utils.cpp           \
 
 # for acpub machines
 COURSE_DIR = -I./utils/include/       \
-			-I./Data_Package/include/  \
-			-I./Costum_Error/include/  \
+             -I./Data_Package/include/  \
+	     -I./Costum_Error/include/  \
+             -I./MG966/include/  \
+             -I./ACS712/include/  \
+             -I./Robot_Arm_Controller/include/  \
 
 LIB_DIR     = /usr/include/          
 	      		
@@ -89,7 +95,7 @@ LDFLAGS         = -L. \
 # If you make a library of your own, say, libscandir.a, you have to link it
 # in by adding -lscandir here.
 
-LDLIBS          = -lwiringPi -lm
+LDLIBS          = -lwiringPi -lm  -lpthread
 
 # All source files have associated object files.
 # This line sets `OFILES' to have the same value as `SRC_FILES' but
