@@ -8,11 +8,9 @@
 #ifndef ROBOT_ARM_CONTROLLER_ROBOT_ARM_CONTROLLER_HPP_
 #define ROBOT_ARM_CONTROLLER_ROBOT_ARM_CONTROLLER_HPP_
 
-
-#include "MG966/include/MG966_API.hpp"
-#include "ACS712/include/ACS712_API.hpp"
 #include "General_Error.hpp"
-#include <wiringPi.h> /* include wiringPi library */
+#include "Stepping_Motor.hpp"
+#include "i2c_API.hpp"
 #include <string>
 #include <iostream>
 #include <stdint.h>
@@ -24,18 +22,21 @@ class Robot_Arm_Controller {
 public:
 	Robot_Arm_Controller();
 	~Robot_Arm_Controller();
+	general_err_t set_Default();
 	general_err_t Test();
+	general_err_t test_position(uint8_t index, uint8_t position);
 
 private:
-	// create a private structure of
-	// motor and current sensor
-	typedef struct{
-	std::string name;
-	MG966_API * mg966_motor;
-	ACS712_API * current_sensor;
-	}Stepping_Motor;
+	const uint8_t m_i2c_addr = 0x40;
+	i2c_API * m_i2c;
 
-	Stepping_Motor m_motor_array[MAX_NUMBER_OF_MOTOR];
+	Stepping_Motor * m_base_motor;
+	Stepping_Motor * m_adjuster_1_motor;
+	Stepping_Motor * m_adjuster_2_motor;
+	Stepping_Motor * m_adjuster_3_motor;
+	Stepping_Motor * m_arm_rotator_motor;
+	Stepping_Motor * m_arm_grabber_motor;
+
 
 
 };

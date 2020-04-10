@@ -24,7 +24,9 @@ COMP_FILES= ./utils/utils.cpp           \
             ./Costum_Error/General_Error.cpp \
             ./MG966/MG966_API.cpp\
             ./ACS712/ACS712_API.cpp\
-            ./Robot_Arm_Controller/Robot_Arm_Controller.cpp
+            ./Robot_Arm_Controller/Robot_Arm_Controller.cpp \
+	    ./Robot_Arm_Controller/Stepping_Motor.cpp \
+	    ./Protocol/i2c_API.cpp
 
 #SRC_FILES = application.cc displaycommand.cc filelister.cc menu.cc \
 #        menuitem.cc pixmap.cc quitcommand.cc readcommand.cc \
@@ -48,6 +50,7 @@ COURSE_DIR = -I./utils/include/       \
              -I./MG966/include/  \
              -I./ACS712/include/  \
              -I./Robot_Arm_Controller/include/  \
+             -I./Protocol/include/  \
 
 LIB_DIR     = /usr/include/          
 	      		

@@ -18,7 +18,23 @@
 
 
 
-
+/**
+ * @brief
+ *
+ * @attention
+ *
+ *
+ * @param[in]
+ * @param[in]
+ *
+ * @param[out]
+ * @param[out]
+ *
+ * @return
+ *    - IoT_OK
+ *    -
+ *    -
+ */
 int main(int argc, char ** argv)
 {
 	std::cout <<"Hello World" << std::endl;
@@ -27,11 +43,11 @@ int main(int argc, char ** argv)
 	wiringPiSetup();
 
 	Robot_Arm_Controller RAC;
-
+	RAC.set_Default();
 	for(;;)
 	{
 		std::cout << "TESTING RAC :: " << std::endl;
-		RAC.Test();
+		RAC.test_position(0,50);
 		delay(1000);
 	}
 

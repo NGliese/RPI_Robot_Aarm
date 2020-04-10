@@ -9,16 +9,17 @@
 #define MG966_INCLUDE_MG966_API_HPP_
 
 #include "General_Error.hpp"
+#include "i2c_API.hpp"
 
 #include <stdint.h>
 #include <wiringPi.h> /* include wiringPi library */
 #include <stdio.h>
-#include <softPwm.h>  /* include header file for software PWM */
+
 #include <iostream>
 
 class MG966_API {
 public:
-	MG966_API(uint8_t pwm_pin);
+	MG966_API(uint8_t pwm_pin, i2c_API * i2c);
 	~MG966_API();
 	general_err_t initialize(); // define referance point
 	general_err_t set_position(uint8_t pos);
@@ -27,6 +28,11 @@ public:
 private:
 
 	general_err_t set_duty_cycle(uint8_t duty_cycle);
+
+
+
+	i2c_API * m_i2c;
+
 
 	uint8_t m_position;
 	uint8_t m_pwm_pin;
